@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+bt_sale_mrp_custom.access_sale_addon_product,access_sale_addon_product,bt_sale_mrp_custom.model_sale_addon_product,,1,1,1,1
+bt_sale_mrp_custom.access_pick_addon_product_wizard,access_pick_addon_product_wizard,bt_sale_mrp_custom.model_pick_addon_product_wizard,,1,1,1,1
+bt_sale_mrp_custom.access_pick_addon_product_wizard_line,access_pick_addon_product_wizard_line,bt_sale_mrp_custom.model_pick_addon_product_wizard_line,,1,1,1,1

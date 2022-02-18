@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="pick_addon_product_wizard_view_form" model="ir.ui.view">
+        <field name="name">pick.addon.product.wizard.view.form</field>
+        <field name="model">pick.addon.product.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Pick Add-on Products">
+                <group>
+                    <group>
+                        <field name="order_line_id" invisible="1"/>
+                        <field name="main_product_id" readonly="1"/>
+                        <field name="name" string="Reference"/>
+                    </group>
+                </group>
+                <group name='products' string='Add-on Products'>
+                	<field name="addon_product_ids" nolabel="1">
+                		<tree editable="bottom">
+                			<field name="product_id" domain="[('addon_product','=',True)]" required="1"/>
+                			<field name="product_qty"/>
+                		</tree>
+                	</field>
+                </group>
+                <footer>
+                    <button string="Add" name="action_pick_addon_products" class="btn-primary" type="object"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="pick_addon_product_wizard_action" model="ir.actions.act_window">
+        <field name="name">Pick Add-on Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pick.addon.product.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="pick_addon_product_wizard_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

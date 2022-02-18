@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+        	<xpath expr="//header/button[@id='action_confirm']" position="before">
+        		 <button name="action_create_mrp" data-hotkey="v" string="Create MRP" type="object" 
+        		 	attrs="{'invisible':['|',('state','not in',['sale','done']),('mrp_created','=',True)]}"/>
+        	</xpath>
+        	<xpath expr="//sheet/div[@class='oe_button_box']" position="inside">
+        		<button name="action_view_addons_mrp" type="object" class="oe_stat_button" icon="fa-pencil-square-o"
+        			 attrs="{'invisible': [('mrp_created', '=',False)]}" string="Manufacturing Orders">
+                </button>
+        	</xpath>
+        	<xpath expr="//group/group/field[@name='payment_term_id']" position="after">
+        		<field name="mrp_created" invisible="1"/>
+        	</xpath>
+            <xpath expr="//notebook/page/field[@name='order_line']/tree/field[last()]" position="after">
+                <button name="%(pick_addon_product_wizard_action)d" type="action" icon="fa-list" width="0.1" 
+                	 options="{&quot;warn&quot;: true}" attrs="{'invisible':[('state','in',['sale','done'])]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
+
+
